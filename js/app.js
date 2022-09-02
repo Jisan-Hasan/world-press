@@ -33,15 +33,19 @@ const loadNews = category => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayNews(data.data));
+        .then(data => displayNews(data.data, category));
 }
 
 
-const displayNews = allNews => {
+const displayNews = (allNews, category) => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
+
+    const newsCount = document.getElementById('news-count');
+    let count = 0;
     allNews.forEach(news => {
         // console.log(news);
+        count++;
         const newsDiv = document.createElement('div');
         newsDiv.className = "card mb-3 bg-white p-4";
         newsDiv.innerHTML = `
@@ -72,6 +76,27 @@ const displayNews = allNews => {
         `;
         newsContainer.appendChild(newsDiv);
     })
+
+
+    // Update category Count
+    let categoryName;
+    fetch('https://openapi.programming-hero.com/api/news/categories')
+        .then(res => res.json())
+        .then(data => findCategoryName(data.data.news_category, category))
+        .catch(error => console.log(error))
+
+    const findCategoryName = (allCategories, categoryId) => {
+        allCategories.forEach(c => {
+            if(c.category_id === categoryId){
+                if(count === 0){
+                    newsCount.innerText = `No news found for category ${c.category_name}`;
+                } else{
+                    newsCount.innerText = `${count} item found for category ${c.category_name}`;
+                }
+            }
+        })
+    }
+    
 }
 
 
