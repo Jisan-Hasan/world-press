@@ -43,6 +43,11 @@ const displayNews = (allNews, category) => {
 
     const newsCount = document.getElementById('news-count');
     let count = 0;
+
+    // sort news based on view
+    allNews.sort((a, b) => {
+        return b.total_view - a.total_view;
+    })
     allNews.forEach(news => {
         // console.log(news);
         count++;
