@@ -25,8 +25,6 @@
                     <div class="navbar-nav ms-auto gap-3">
                         <a class="nav-link active" aria-current="page" href="index.html">News</a>
                         <a class="nav-link active" href="blog.html">Blogs</a>
-                        <!-- <a class="nav-link active" href="#">About Us</a>
-                    <a class="nav-link active">Contact Us</a> -->
                     </div>
                 </div>
             </div>
@@ -46,9 +44,31 @@
           </div>
 
           <div class="card text-bg-light mb-3 w-100">
-            <div class="card-header">What is the difference between var, let & constant?</div>
+            <div class="card-header">What is the difference between arrow function & normal function?</div>
             <div class="card-body">
-              <p class="card-text">JavaScript has three variable declaration statements: var, let and const. The latter two were added in ES6, whereas var existed since previous versions. Variables declared with var are function scoped, in contrast to variables declared with let or const which are block scoped. While variables declared with var are hoisted to the enclosing scope, variables declared with let or const are not initialized until their definition is evaluated. variables declared with var can be re-declared in the same scope, whereas this is not allowed for variables declared with let or const.</p>
+              <p class="card-text">Today, there are two common methods of declaring a function in JavaScript: Arrow functions and Regular functions. The first and most obvious difference between arrow functions and regular functions is their syntax. Not only do they look different, but arrow functions also provide an implicit return shorthand and allow parenthesis around a single argument to be omitted. Regular functions can be used as constructors, using the new keyword. Yet another consequence of the lexical resolution of this inside arrow functions is that they cannot be used as constructors. Using new with an arrow function results in a TypeError. Another difference is the binding of the arguments object. Unlike regular functions, arrow functions don't have their own arguments object. A modern alternative that circumvents this limitation is the usage of rest parameters.</p>
+            </div>
+          </div>
+
+          <div class="card text-bg-light mb-3 w-100">
+            <div class="card-header">What is the difference between  forEach, map, filter & find?</div>
+            <div class="card-body">
+              <p class="card-text">
+                <ul>
+
+                    <li>The forEach() method is the most similar to the for loop. The function inside the parentheses of the .forEach() is simply executed "for each" element of the array.</li>
+                    <li>The map() is a lot like .forEach(), but it very helpfully creates and returns a new array. Use .map() whenever you need to update data inside an array (by mapping over it!).</li>
+                    <li>The filter() loops through (or iterates) through data, and filters out data that doesn't match the criteria that we set. We define what those criteria are through a truth test inside a function.</li>
+                    <li>The find() method returns the value of the first element that passes a test. The find() method executes a function for each array element. The find() method returns undefined if no elements are found.</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+
+          <div class="card text-bg-light mb-3 w-100">
+            <div class="card-header">What we use Template String?</div>
+            <div class="card-body">
+              <p class="card-text">Template were introduced in ES6 to allow embed expressions inside a string. Instead of ‘’ or “” quotation marks they use the backticks (``). They offer a much better way of string interpolation and expressions can be embedded in a way like ${a+b}. It offers a much nicer syntax than the + operator.</p>
             </div>
           </div>
     </section>
