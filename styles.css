@@ -8,6 +8,7 @@ body{
 }
 
 
+
 @media screen and (max-width:520px){
     #categories-container{
         display: grid;

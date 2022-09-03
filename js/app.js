@@ -61,11 +61,12 @@ const displayNews = (allNews, category) => {
             <div class="col-md-2">
                 <img src="${news.thumbnail_url}" class="img-fluid rounded-start w-100" alt="...">
             </div>
-            <div class="col-md-10">
-                <div class="card-body">
+            <div class="col-md-10 container-fluid">
+                <div class="card-body d-flex flex-column h-100 justify-content-between">
                     <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text">${news.details.slice(0, 700)}...</p>
-                    <div class="d-flex justify-content-between mt-4 align-self-end">
+                    <p class="card-text">${news.details.length > 400 ? news.details.slice(0, 700)+'...' : news.details}</p>
+                    
+                    <div class="d-flex justify-content-between">
                         <div class="d-flex gap-2">
                             <img  style="width: 40px; height: 40px; border-radius: 50%;" src="${news.author.img}" alt="">
                             <p>${news.author.name ? news.author.name : "No Author Name Found"}</p>
@@ -79,6 +80,7 @@ const displayNews = (allNews, category) => {
                             data-bs-target="#exampleModalScrollable"><i class="fa-solid fa-arrow-right-long"></i></p>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
