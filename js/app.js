@@ -125,7 +125,7 @@ const loadDetails = newsId => {
         .catch(error => console.log(error))
 }
 const displayDetails = news => {
-    console.log(news);
+    // console.log(news);
     const modalContainer = document.getElementById('modal-container');
     modalContainer.innerHTML = `
     <div class="modal-header">
