@@ -65,14 +65,15 @@ const displayNews = (allNews, category) => {
                     <div class="d-flex justify-content-between mt-4 align-self-end">
                         <div class="d-flex gap-2">
                             <img  style="width: 40px; height: 40px; border-radius: 50%;" src="${news.author.img}" alt="">
-                            <p>${news.author.name}</p>
+                            <p>${news.author.name ? news.author.name : "No Author Name Found"}</p>
                         </div>
                         <div class="d-flex gap-2">
                             <p><i class="fa-regular fa-eye"></i></p>
-                            <p>${news.total_view}</p>
+                            <p>${news.total_view ? news.total_view : '0'}</p>
                         </div>
                         <div>
-                            <p><i class="fa-solid fa-arrow-right-long"></i></p>
+                            <p onclick="loadDetails('${news._id}')" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalScrollable"><i class="fa-solid fa-arrow-right-long"></i></p>
                         </div>
                     </div>
                 </div>
@@ -105,6 +106,36 @@ const displayNews = (allNews, category) => {
 }
 
 
+// Load News Details by id
+const loadDetails = newsId => {
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayDetails(data.data[0]))
+        .catch(error => console.log(error))
+}
+const displayDetails = news => {
+    console.log(news);
+    const modalContainer = document.getElementById('modal-container');
+    modalContainer.innerHTML = `
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">${news.title}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <h3>Author: ${news.author.name ? news.author.name : "Unknown Author"}</h3>
+        <p><small>Date: ${news.author.published_date ? news.author.published_date : "No date found"}</small></p>
+        <p><small>Total Views: ${news.total_view ? news.total_view : "0"}</small></p>
+        <img class="img-fluid" src="${news.image_url}">
+        <p class="mt-3">${news.details}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+    `;
+}
+
+
 // catch category id & call load news
 document.getElementById('categories-container').addEventListener('click', (e) => {
     const selectCategory = e.target.innerText;
@@ -126,27 +157,8 @@ const callLoadNewsByCategory = (selectCategory, categories) => {
 
 
 
+
+
+
 loadNews('01');
 
-
-
-// Test Section
-// const testImg = () => {
-    
-//     fetch('https://openapi.programming-hero.com/api/news/category/01')
-//         .then(res => res.json())
-//         .then(data => displayImg(data.data[0]))
-
-// }
-
-// const displayImg = data => {
-//     const imgSection = document.getElementById('test');
-//     console.log(data)
-//     imgSection.innerHTML = `
-//             <img  src="${data.author.img}" alt="">
-//         `;
-    
-// }
-
-
-// testImg();
