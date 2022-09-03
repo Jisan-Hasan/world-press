@@ -7,6 +7,10 @@ body{
     justify-content: space-between;
 }
 
+.pointer-cursor{
+    cursor: pointer;
+}
+
 
 
 @media screen and (max-width:520px){
@@ -17,3 +21,6 @@ body{
         /* align-items: center; */
     }
 }
+
+
+/* Extra Test*/

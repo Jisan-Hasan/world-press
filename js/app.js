@@ -16,6 +16,7 @@ const displayCategories = categories => {
     categories.forEach(category => {
         // console.log(category);
         const categoryDiv = document.createElement('div');
+        categoryDiv.classList.add('pointer-cursor');
         categoryDiv.innerHTML = `
             ${category.category_name}
         `;
@@ -67,16 +68,16 @@ const displayNews = (allNews, category) => {
                     <p class="card-text">${news.details.length > 400 ? news.details.slice(0, 700)+'...' : news.details}</p>
                     
                     <div class="d-flex justify-content-between">
-                        <div class="d-flex gap-2">
+                        <div class="d-flex gap-2 align-items-center">
                             <img  style="width: 40px; height: 40px; border-radius: 50%;" src="${news.author.img}" alt="">
-                            <p>${news.author.name ? news.author.name : "No Author Name Found"}</p>
+                            <p class="mt-2">${news.author.name ? news.author.name : "No Author Name Found"}</p>
                         </div>
                         <div class="d-flex gap-2">
                             <p><i class="fa-regular fa-eye"></i></p>
                             <p>${news.total_view ? news.total_view : '0'}</p>
                         </div>
                         <div>
-                            <p onclick="loadDetails('${news._id}')" data-bs-toggle="modal"
+                            <p class="pointer-cursor" onclick="loadDetails('${news._id}')" data-bs-toggle="modal"
                             data-bs-target="#exampleModalScrollable"><i class="fa-solid fa-arrow-right-long"></i></p>
                         </div>
                     </div>
