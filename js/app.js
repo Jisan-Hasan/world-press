@@ -37,7 +37,8 @@ const loadNews = category => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayNews(data.data, category));
+        .then(data => displayNews(data.data, category))
+        .catch(error => console.log(error))
 }
 
 
@@ -162,10 +163,6 @@ const callLoadNewsByCategory = (selectCategory, categories) => {
         }
     })
 }
-
-
-
-
 
 
 
