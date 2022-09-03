@@ -27,9 +27,12 @@ const displayCategories = categories => {
 loadCategories();
 
 
+const spinnerSection = document.getElementById('spinner');
 
 // Load News based on Category
 const loadNews = category => {
+    // show spinner
+    spinnerSection.classList.remove('d-none');
     const url = `https://openapi.programming-hero.com/api/news/category/${category}`;
     fetch(url)
         .then(res => res.json())
@@ -102,6 +105,9 @@ const displayNews = (allNews, category) => {
             }
         })
     }
+
+    // Hide Spinner
+    spinnerSection.classList.add('d-none');
     
 }
 
